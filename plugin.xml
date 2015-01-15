@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+  <extension point="com.dynatrace.diagnostics.pdk.pluginconfig" id="com.dynatrace.diagnostics.plugins.WindowsProcessStatusPlugin" name="Windows Process Status Plugin">
+    <information>
+      <category value="" />
+      <description value="The Windows Process Status Plugin returns the status of the specified Process." />
+	  <license value="dynaTraceBSD.txt" />
+	  <supportlevel value="unsupported"/>
+    </information>
+    <configuration>
+      <property key="Process" label="Process" type="string" description="Windows Process name." default="" />
+    </configuration>
+  </extension>
+  <extension point="com.dynatrace.diagnostics.pdk.monitor" id="com.dynatrace.diagnostics.plugins.WindowsProcessStatusPlugin.monitor" name="Windows Process Status Monitor">
+    <plugin configid="com.dynatrace.diagnostics.plugins.WindowsProcessStatusPlugin" class="wp.WPMonitor" />
+  </extension>
+  <extension point="com.dynatrace.diagnostics.pdk.monitormetricgroup" id="com.dynatrace.diagnostics.plugins.WindowsProcessStatusPlugin.monitor.metricgroup" name="Windows Process Status Monitor">
+    <metricgroup monitorid="com.dynatrace.diagnostics.plugins.WindowsProcessStatusPlugin.monitor">
+      <metric name="ProcessCount" unit="number" description="Returns count of running processes. " />
+    </metricgroup>
+  </extension>
+</plugin>
+
